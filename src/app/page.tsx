@@ -1,9 +1,22 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold">Hello World</h1>
+    <main>
+      <h1>Find events around you</h1>
+      <p>Browser more than 10,000 events around you</p>
+
+      <form>
+        <input placeholder="Search events in any city... " spellCheck="false" />
+      </form>
+      <section>
+        <p>Popular:</p>
+        <div>
+          <Link href="/events/austin">Austin</Link>
+          <Link href="/events/seattle">Seattle</Link>
+        </div>
+      </section>
     </main>
   );
 }
