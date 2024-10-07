@@ -1,4 +1,4 @@
-#Evento
+# Evento
 
 Website Application used to find local or country-wide events. Includes a page for each event and allows lookup of events via city. 
 * Uses NextJS to create a muti-page, caching, fullstack app using typescript.
