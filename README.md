@@ -4,7 +4,8 @@ Website Application used to find local or country-wide events. Includes a page f
 * Uses NextJS to create a muti-page, caching, fullstack app using typescript.
 * Uses Tailwind CSS for modern styling
 
-
+<br> </br>
+<br> </br>
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
