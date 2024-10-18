@@ -1,5 +1,7 @@
+import SearchForm from "@/components/search-form";
 import Image from "next/image";
 import Link from "next/link";
+import { FormEvent } from "react";
 
 export default function Home() {
   return (
@@ -15,13 +17,8 @@ export default function Home() {
         around you
       </p>
 
-      <form className="w=full sm:w-[580px]">
-        <input
-          className="w-full h-16 rounded-lg bg-white/[7%] px-6 outline-none ring-accent/50 transition focus:ring-2 focus:bg-white/10"
-          placeholder="Search events in any city... "
-          spellCheck="false"
-        />
-      </form>
+      <SearchForm />
+
       <section className="mt-4 flex gap-x-4 text-sm text-white/50">
         <p>Popular:</p>
         <div className="space-x-2 font-semibold">
