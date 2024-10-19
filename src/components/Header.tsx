@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Logo from "@/components/Logo";
+import Logo from "@/components/logo";
 import path from "path";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
