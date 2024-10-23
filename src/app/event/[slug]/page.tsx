@@ -16,7 +16,6 @@ export default async function EventPage({ params }: EventPageProps) {
   console.log(event);
   return (
     <main>
-      <section></section>
       <section className="relative overflow-hidden flex justify-center items-center">
         <Image
           src={event.imageUrl}
