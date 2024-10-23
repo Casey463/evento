@@ -1,5 +1,4 @@
-export default function EventPage() {
-  return <div>dadads</div>;
+import H1 from "@/components/h1";
 import Image from "next/image";
 
 type EventPageProps = {
