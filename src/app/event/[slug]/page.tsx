@@ -10,6 +10,14 @@ type Props = {
   };
 };
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const event = await getEvent(params.slug);
+  return {
+    title: event.name,
+    description: event.description,
+  };
+}
+
 export default async function EventPage({ params }: Props) {
   const event = await getEvent(params.slug);
   console.log(event);
