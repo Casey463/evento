@@ -19,14 +19,16 @@ export function capitalize(string: string) {
 }
 
 export async function getEvents(city: string) {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`,
-    {
-      next: { revalidate: 300 },
-    }
-  );
-  const events: EventoEvent[] = await response.json();
-  return events;
+  const events = await prisma.eventoEvent.findMany({
+    where: {
+      city: city === "all" ? undefined : capitalize(city),
+    },
+    orderBy: {
+      date: "asc",
+    },
+  });
+
+  return events as EventoEvent[];
 }
 
 export async function getEvent(slug: string) {
