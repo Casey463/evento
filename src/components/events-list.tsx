@@ -1,4 +1,3 @@
-import { EventoEvent } from "@/lib/types";
 import React from "react";
 import EventCard from "./event-card";
 import { getEvents, sleep } from "@/lib/utils";
