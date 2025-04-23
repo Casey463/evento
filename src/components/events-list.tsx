@@ -2,9 +2,11 @@ import React from "react";
 import EventCard from "./event-card";
 import { getEvents, sleep } from "@/lib/utils";
 import { get } from "http";
+import PaginationControls from "./pagination-controls";
 
 type EventsListProps = {
   city: string;
+  page: number;
 };
 
 export default async function EventsList({ city, page }: EventsListProps) {
@@ -19,6 +21,8 @@ export default async function EventsList({ city, page }: EventsListProps) {
       {events.map((event) => (
         <EventCard key={event.id} event={event} />
       ))}
+
+      <PaginationControls previousPath={previousPath} nextPath={nextPath} />
     </section>
   );
 }
