@@ -7,8 +7,12 @@ type EventsListProps = {
   city: string;
 };
 
-export default async function EventsList({ city }: EventsListProps) {
-  const events = await getEvents(city);
+export default async function EventsList({ city, page }: EventsListProps) {
+  const { events, totalCount } = await getEvents(city, page);
+
+  const previousPath = page > 1 ? `/events/${city}?page=${page - 1}` : "";
+  const nextPath =
+    totalCount > page * 6 ? `/events/${city}?page=${page + 1}` : "";
 
   return (
     <section className="max-w-[1100px] flex flex-wrap gap-10 justify-center px-[20px] ">
