@@ -5,6 +5,7 @@ import prisma from "./db";
 import { EventoEvent } from "@prisma/client";
 import NotFound from "@/app/not-found";
 import { notFound } from "next/navigation";
+import { unstable_cache } from "next/cache";
 
 export default function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(...inputs));
@@ -18,28 +19,18 @@ export function capitalize(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export async function getEvents(city: string, page: number = 1) {
-  const events = await prisma.eventoEvent.findMany({
-    where: {
-      city: city === "all" ? undefined : capitalize(city),
-    },
-    orderBy: {
-      date: "asc",
-    },
-    take: 6,
-    skip: (page - 1) * 6,
-  });
-
-  let totalCount;
-  if (city == "all") {
-    totalCount = await prisma.eventoEvent.count();
-  } else {
-    totalCount = await prisma.eventoEvent.count({
+export const getEvents = unstable_cache(
+  async (city: string, page: number = 1) => {
+    const events = await prisma.eventoEvent.findMany({
       where: {
-        city: capitalize(city),
+        city: city === "all" ? undefined : capitalize(city),
       },
+      orderBy: {
+        date: "asc",
+      },
+      take: 6,
+      skip: (page - 1) * 6,
     });
-  }
 
   return { events, totalCount } as {
     events: EventoEvent[];
@@ -57,4 +48,4 @@ export async function getEvent(slug: string) {
   }
 
   return event as EventoEvent;
-}
+});
