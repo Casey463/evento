@@ -19,10 +19,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export function generateStaticParams() {
-  // "top 100 most popular events" rendred at build time to improve performance
-  return [{ slug: "comedy-extravaganza" }, { slug: "dj-practice-session" }];
-}
+// export function generateStaticParams() {
+//   // "top 100 most popular events" rendred at build time to improve performance
+//   return [{ slug: "comedy-extravaganza" }, { slug: "dj-practice-session" }];
+// }
 
 export default async function EventPage({ params }: Props) {
   const event = await getEvent(params.slug);
